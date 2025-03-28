@@ -1,0 +1,49 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry]
+name = "pyikaild"
+version = "0.0.0"  # Supplied by dynamic versioning, no need to update.
+description = "My package description"
+authors = [
+    "name <name@uu.nl>"
+]
+readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+]
+keywords = ["some", "keywords", "here"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+
+[tool.poetry.group.test.dependencies]
+ruff = ">=0.2.2"
+pytest = ">=8.0.1"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+metadata = true
+style = "semver"
+
+[tool.poetry.extras]
+lint = ["flake8"]
+test = ["pytest", "mypy"]
+
+[tool.ruff]
+exclude = ["_version.py", "metasyn/distribution/legacy.*"]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "D"]
+
+[[tool.mypy.overrides]]
+module = [
+    # "scipy.*",
+    # "pandas.*",
+]
+ignore_missing_imports = true
