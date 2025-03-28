@@ -1,3 +1,8 @@
+"""
+This module implements the Improved l-Diversity (ILD) algorithm.
+
+The ILD algorithm ensures that each equivalence class has at least 'l' distinct values for the Sensitive Attribute.
+"""
 import pandas as pd
 import numpy as np
 from typing import List, Dict, Optional, Union, Tuple, Any
@@ -7,9 +12,9 @@ from typing import List, Dict, Optional, Union, Tuple, Any
 # ---------------------
 class ILD:
     """
-    Implements Improved l-Diversity (ILD).
+    Implement Improved l-Diversity (ILD).
 
-    Ensures that each equivalence class (group of records with identical
+    Ensure that each equivalence class (group of records with identical
     generalized Quasi-Identifiers) has at least 'l' distinct values for the
     Sensitive Attribute (SA).
 
@@ -25,7 +30,9 @@ class ILD:
         qi_attributes (List[str]): List of QI column names (should match those used in IKA).
         sa_attribute (str): Column name of the Sensitive Attribute.
     """
+
     def __init__(self, l: int, qi_attributes: List[str], sa_attribute: str):
+        """Initialize the ILD class with the given parameters."""
         if l < 2:
             # l=1 diversity is meaningless (always satisfied if SA exists)
             raise ValueError("l must be at least 2 for l-diversity to be meaningful.")
@@ -40,7 +47,7 @@ class ILD:
         self._diverse_data: Optional[pd.DataFrame] = None
 
     def _validate_df(self, df: pd.DataFrame):
-        """Checks if required columns exist."""
+        """Check if required columns exist."""
         missing_qi = [col for col in self.qi_attributes if col not in df.columns]
         if missing_qi:
             raise ValueError(f"Missing QI attributes in DataFrame: {missing_qi}")
@@ -48,16 +55,7 @@ class ILD:
             raise ValueError(f"Missing SA attribute in DataFrame: {self.sa_attribute}")
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Applies l-diversity enforcement to a k-anonymized DataFrame.
-
-        Args:
-            df (pd.DataFrame): The k-anonymized DataFrame (output from IKA).
-
-        Returns:
-            pd.DataFrame: The DataFrame with l-diversity enforced (may have
-                          modified sensitive attribute values).
-        """
+        """Apply l-diversity enforcement to a k-anonymized DataFrame."""
         self._validate_df(df)
         self._diverse_data = df.copy()
 
@@ -106,7 +104,7 @@ class ILD:
                  continue # No donors left
 
             # Find SA values to borrow
-            borrowed_values = set()
+            borrowed_values: set[str] = set()
             donor_groups_used = set()
 
             attempts = 0
@@ -168,6 +166,6 @@ class ILD:
         return self._diverse_data
 
     def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Transforms the data to enforce l-diversity. Fit is not needed."""
+        """Transform the data to enforce l-diversity. Fit is not needed."""
         # No fitting step required for ILD as defined here
         return self.transform(df)

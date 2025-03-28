@@ -1,3 +1,8 @@
+"""
+This module provides helper functions for generalization and information loss calculation.
+
+It includes functions to generalize categorical and numerical data and to calculate information loss.
+"""
 import pandas as pd
 from typing import List
 
@@ -32,8 +37,9 @@ def calculate_information_loss(
     categorical_qi: List[str]
 ) -> float:
     """
-    Calculates a simplified Information Loss metric based on generalization.
-    Compares ranges/categories in anonymized vs. original data.
+    Calculate a simplified Information Loss metric based on generalization.
+
+    Compare ranges/categories in anonymized vs. original data.
 
     Note: This is a simplified interpretation of Equation 1. A precise
     implementation requires full domain ranges (max_j, min_j from paper).
@@ -112,4 +118,4 @@ def calculate_information_loss(
 
         total_loss += (record_loss / n_qi) # Average loss across QIs for the record
 
-    return total_loss / n_records # Average loss across all records
+    return total_loss / n_records  # Average loss across all records

@@ -4,10 +4,10 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry]
 name = "pyikaild"
-version = "0.0.0"  # Supplied by dynamic versioning, no need to update.
-description = "My package description"
+version = "0.0.1"  # Supplied by dynamic versioning, no need to update.
+description = "Anonymization and anonymization evaluation library"
 authors = [
-    "name <name@uu.nl>"
+    "woaitsAryan <yoprince.ab@gmail.com>"
 ]
 readme = "README.md"
 license = "MIT"
@@ -16,11 +16,19 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
 ]
-keywords = ["some", "keywords", "here"]
+keywords = ["anonymization", "anonymization evaluation", "privacy", "data privacy", "data anonymization", "data privacy evaluation"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 pandas = "^2.2.3"
+build = "^1.2.2.post1"
+pydocstyle = "^6.3.0"
+mypy = "^1.15.0"
+pandas-stubs = "^2.2.3.250308"
+sphinx = "^8.2.3"
+sphinx-rtd-theme = "^3.0.2"
+sphinxcontrib-napoleon = "^0.7"
+sphinx-autodoc-typehints = "^3.1.0"
 
 [tool.poetry.group.test.dependencies]
 ruff = ">=0.2.2"
@@ -43,7 +51,6 @@ select = ["E", "F", "W", "I", "N", "D"]
 
 [[tool.mypy.overrides]]
 module = [
-    # "scipy.*",
-    # "pandas.*",
+    "pyikaild.*",
 ]
 ignore_missing_imports = true

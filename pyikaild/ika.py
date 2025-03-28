@@ -1,13 +1,20 @@
+"""
+This module implements the Improved k-Anonymization (IKA) algorithm.
+
+The IKA algorithm uses generalization techniques to ensure k-anonymity in datasets.
+"""
 import pandas as pd
 from typing import List, Dict, Optional, Any
-from pyikaild.processing import generalize_categorical, calculate_information_loss, generalize_numeric
+from pyikaild.processing import (
+    generalize_categorical,
+    calculate_information_loss,
+    generalize_numeric
+)
 
-# ---------------------
-# IKA Class
-# ---------------------
+
 class IKA:
     """
-    Implements Improved k-Anonymization (IKA) using generalization.
+    Implement Improved k-Anonymization (IKA) using generalization.
 
     Uses a recursive partitioning approach inspired by Mondrian to divide
     the dataset into equivalence classes (partitions) where each class
@@ -25,6 +32,7 @@ class IKA:
         partitions (List[pd.Index]): Stores the indices of records belonging to each final partition.
         generalization_map (Dict): Stores the generalized values for each partition and QI.
     """
+
     def __init__(self,
                  k: int,
                  qi_attributes: List[str],
@@ -32,6 +40,7 @@ class IKA:
                  numerical_qi: Optional[List[str]] = None,
                  categorical_qi: Optional[List[str]] = None,
                  max_split_level: int = 10):
+        """Initialize the IKA class with the given parameters."""
         if k < 2:
             raise ValueError("k must be at least 2.")
         if not qi_attributes:
@@ -55,7 +64,7 @@ class IKA:
         self._original_df_for_loss: Optional[pd.DataFrame] = None # Store original for loss calc
 
     def _validate_and_prepare_df(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Checks columns, handles type detection, returns working copy."""
+        """Check columns, handle type detection, and return a working copy."""
         df_copy = df.copy()
         missing_qi = [col for col in self.qi_attributes if col not in df_copy.columns]
         if missing_qi:
@@ -108,6 +117,9 @@ class IKA:
             if df_partition[attr].nunique() > 1:
                 min_val, max_val = df_partition[attr].min(), df_partition[attr].max()
                 # Normalize range by overall range in the original data (approximation)
+                if self._original_df_for_loss is None:
+                    raise ValueError("Original DataFrame not provided. Cannot normalize range.")
+                
                 global_min = self._original_df_for_loss[attr].min() # Requires storing original df
                 global_max = self._original_df_for_loss[attr].max()
                 global_range = global_max - global_min
@@ -121,17 +133,19 @@ class IKA:
             if n_unique > 1:
                  # Prioritize splitting categoricals with more distinct values
                  # Normalize by total categories (approximation)
-                 global_unique = self._original_df_for_loss[attr].nunique()
-                 normalized_uniqueness = n_unique / global_unique if global_unique > 0 else 0
-                 # Give slight preference to splitting categoricals if range is similar
-                 if normalized_uniqueness >= max_spread * 0.9: # Heuristic threshold
+                if self._original_df_for_loss is None:
+                    raise ValueError("Original DataFrame not provided. Cannot normalize range.")
+                global_unique = self._original_df_for_loss[attr].nunique()
+                normalized_uniqueness = n_unique / global_unique if global_unique > 0 else 0
+                # Give slight preference to splitting categoricals if range is similar
+                if normalized_uniqueness >= max_spread * 0.9: # Heuristic threshold
                     max_spread = normalized_uniqueness
                     best_attr = attr
 
         return best_attr
 
     def _find_split_value(self, df_partition: pd.DataFrame, attr: str) -> Any:
-        """Finds the median for numerical or a category split point."""
+        """Find the median for numerical or a category split point."""
         if attr in self._numerical_qi:
             return df_partition[attr].median()
         elif attr in self._categorical_qi:
@@ -207,13 +221,7 @@ class IKA:
 
 
     def fit(self, df: pd.DataFrame):
-        """
-        Learns the partitioning for k-anonymity based on the input DataFrame.
-        Stores the original data for information loss calculation.
-
-        Args:
-            df (pd.DataFrame): The input data to anonymize.
-        """
+        """Fit the model to the DataFrame, partitioning it according to k-anonymity."""
         self._original_df_for_loss = df.copy() # Store for loss calculation
         self._working_df = self._validate_and_prepare_df(df)
 
@@ -246,16 +254,7 @@ class IKA:
 
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Applies the learned k-anonymization (generalization) to the DataFrame.
-
-        Args:
-            df (pd.DataFrame): The input data. Should ideally be the same data
-                               passed to fit() or have the same structure.
-
-        Returns:
-            pd.DataFrame: The k-anonymized DataFrame.
-        """
+        """Apply the transformation to the DataFrame to achieve k-anonymity."""
         if not self.partitions:
             raise RuntimeError("Fit method must be called before transform.")
 
@@ -285,22 +284,18 @@ class IKA:
         return self.transform(df)
 
     def get_information_loss(self) -> Optional[float]:
-         """
-         Calculates and returns the information loss after anonymization.
-         Requires fit() and transform() to have been called.
-         Uses the original data stored during fit().
-         """
-         if self.anonymized_data is None or self._original_df_for_loss is None:
-              print("Warning: Cannot calculate information loss. Call fit() and transform() first.")
-              return None
-         if len(self._original_df_for_loss) != len(self.anonymized_data):
-              print("Warning: Original and anonymized data length mismatch. Cannot calculate loss accurately.")
-              return None
+        """Calculate the information loss after transformation."""
+        if self.anonymized_data is None or self._original_df_for_loss is None:
+             print("Warning: Cannot calculate information loss. Call fit() and transform() first.")
+             return None
+        if len(self._original_df_for_loss) != len(self.anonymized_data):
+             print("Warning: Original and anonymized data length mismatch. Cannot calculate loss accurately.")
+             return None
 
-         return calculate_information_loss(
-              self._original_df_for_loss,
-              self.anonymized_data,
-              self.qi_attributes,
-              self._numerical_qi,
-              self._categorical_qi
-         )
+        return calculate_information_loss(
+             self._original_df_for_loss,
+             self.anonymized_data,
+             self.qi_attributes,
+             self._numerical_qi,
+             self._categorical_qi
+        )
