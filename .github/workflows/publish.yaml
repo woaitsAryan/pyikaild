@@ -16,5 +16,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: Publish and build the package
       uses: JRubics/poetry-publish@v2.0
-      with:
+      with:git p
         pypi_token: ${{ secrets.PYPI_TOKEN }}

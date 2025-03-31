@@ -4,7 +4,7 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry]
 name = "pyikaild"
-version = "0.0.1"  # Supplied by dynamic versioning, no need to update.
+version = "0.0.2"  # Supplied by dynamic versioning, no need to update.
 description = "Anonymization and anonymization evaluation library"
 authors = [
     "woaitsAryan <yoprince.ab@gmail.com>"
