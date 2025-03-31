@@ -14,6 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Need full history for proper versioning
+    - name: Configure Git for safe directory
+      run: git config --global --add safe.directory /github/workspace
     - name: Publish and build the package
       uses: JRubics/poetry-publish@v2.0
       with:
