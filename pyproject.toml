@@ -1,11 +1,11 @@
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
-build-backend = "poetry_dynamic_versioning.backend"
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pyikaild"
-version = "0.0.2"  # Supplied by dynamic versioning, no need to update.
-description = "Anonymization and anonymization evaluation library"
+version = "0.0.3"  # Supplied by dynamic versioning, no need to update.
+description = "Improved K-Anonymity and l-Diversity library"
 authors = [
     "woaitsAryan <yoprince.ab@gmail.com>"
 ]
@@ -35,7 +35,7 @@ ruff = ">=0.2.2"
 pytest = ">=8.0.1"
 
 [tool.poetry-dynamic-versioning]
-enable = true
+enable = false
 vcs = "git"
 metadata = true
 style = "semver"
