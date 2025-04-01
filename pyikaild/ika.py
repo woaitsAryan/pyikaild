@@ -31,6 +31,7 @@ class IKA:
         anonymized_data (Optional[pd.DataFrame]): Stores the result after transform.
         partitions (List[pd.Index]): Stores the indices of records belonging to each final partition.
         generalization_map (Dict): Stores the generalized values for each partition and QI.
+        silent (bool): Suppresses all print statements if True. Default False.
     """
 
     def __init__(self,
@@ -39,7 +40,8 @@ class IKA:
                  sa_attribute: str, # Keep for context, consistency with paper
                  numerical_qi: Optional[List[str]] = None,
                  categorical_qi: Optional[List[str]] = None,
-                 max_split_level: int = 10):
+                 max_split_level: int = 10,
+                 silent: bool = False):
         """Initialize the IKA class with the given parameters."""
         if k < 2:
             raise ValueError("k must be at least 2.")
@@ -52,6 +54,7 @@ class IKA:
         self.qi_attributes = qi_attributes
         self.sa_attribute = sa_attribute # Primarily for context/downstream use (like ILD)
         self.max_split_level = max_split_level
+        self.silent = silent
 
         # Auto-detect numerical/categorical if not provided (simple heuristic)
         self._numerical_qi = numerical_qi if numerical_qi is not None else []
@@ -62,6 +65,11 @@ class IKA:
         self.partitions: List[pd.Index] = []
         self.generalization_map: List[Dict[str, Any]] = []
         self._original_df_for_loss: Optional[pd.DataFrame] = None # Store original for loss calc
+
+    def _print(self, *args, **kwargs):
+        """Prints only if not silent."""
+        if not self.silent:
+            print(*args, **kwargs)
 
     def _validate_and_prepare_df(self, df: pd.DataFrame) -> pd.DataFrame:
         """Check columns, handle type detection, and return a working copy."""
@@ -85,8 +93,8 @@ class IKA:
                          df_copy[col] = df_copy[col].astype(float)
                 else:
                     self._categorical_qi.append(col)
-            print(f"Auto-detected Numerical QIs: {self._numerical_qi}")
-            print(f"Auto-detected Categorical QIs: {self._categorical_qi}")
+            self._print(f"Auto-detected Numerical QIs: {self._numerical_qi}")
+            self._print(f"Auto-detected Categorical QIs: {self._categorical_qi}")
             self._auto_detect_types_needed = False # Mark as detected
 
         # Ensure correct types based on specification
@@ -94,7 +102,7 @@ class IKA:
             if not pd.api.types.is_numeric_dtype(df_copy[col]):
                  try:
                      df_copy[col] = pd.to_numeric(df_copy[col])
-                     print(f"Warning: Column '{col}' specified as numerical but wasn't; converted.")
+                     self._print(f"Warning: Column '{col}' specified as numerical but wasn't; converted.")
                  except ValueError:
                       raise ValueError(f"Column '{col}' specified as numerical but could not be converted.")
             # Convert integers to float for range calculation consistency
@@ -102,7 +110,7 @@ class IKA:
                  df_copy[col] = df_copy[col].astype(float)
         for col in self._categorical_qi:
             if not isinstance(df_copy[col], pd.CategoricalDtype) and not pd.api.types.is_object_dtype(df_copy[col]) and not pd.api.types.is_string_dtype(df_copy[col]):
-                print(f"Warning: Column '{col}' specified as categorical might have an unexpected type ({df_copy[col].dtype}). Converting to string.")
+                self._print(f"Warning: Column '{col}' specified as categorical might have an unexpected type ({df_copy[col].dtype}). Converting to string.")
             df_copy[col] = df_copy[col].astype(str) # Ensure strings for consistent generalization
 
         return df_copy
@@ -170,15 +178,15 @@ class IKA:
                          all_identical = False
                          break
              if all_identical and len(df_indices)>0 : # Also stop if no more differentiating QIs
-                 #print(f"Stopping partition size {len(df_indices)} at level {level} - all QIs identical.") # Debug
+                 #self._print(f"Stopping partition size {len(df_indices)} at level {level} - all QIs identical.") # Debug
                  pass # Fall through to add partition below
              elif len(df_indices) < self.k:
-                  print(f"WARNING: Partition with {len(df_indices)} records (less than k={self.k}) could not be merged/split further at level {level}. May violate k-anonymity.")
+                  self._print(f"WARNING: Partition with {len(df_indices)} records (less than k={self.k}) could not be merged/split further at level {level}. May violate k-anonymity.")
                   # In a more robust implementation, try merging this with a sibling or parent,
                   # or apply stronger suppression. Here, we issue a warning and keep it.
 
              self.partitions.append(df_indices)
-             #print(f"Final Partition (Size: {len(df_indices)}, Level: {level}) Indices: {df_indices.tolist()}") # Debug
+             #self._print(f"Final Partition (Size: {len(df_indices)}, Level: {level}) Indices: {df_indices.tolist()}") # Debug
              return
 
         # Choose attribute and value to split on
@@ -188,7 +196,7 @@ class IKA:
         if split_attr is None:
             # No attribute found to split on (all values might be identical)
             self.partitions.append(df_indices)
-            #print(f"Final Partition (Size: {len(df_indices)}, Level: {level}) - No split attr. Indices: {df_indices.tolist()}") # Debug
+            #self._print(f"Final Partition (Size: {len(df_indices)}, Level: {level}) - No split attr. Indices: {df_indices.tolist()}") # Debug
             return
 
         split_value = self._find_split_value(current_partition_df, split_attr)
@@ -211,13 +219,13 @@ class IKA:
              # Could try other split attributes/values here for more robustness
 
         if valid_split:
-            #print(f"Level {level}: Splitting partition size {len(df_indices)} on '{split_attr}' ({len(left_indices)} / {len(right_indices)})") # Debug
+            #self._print(f"Level {level}: Splitting partition size {len(df_indices)} on '{split_attr}' ({len(left_indices)} / {len(right_indices)})") # Debug
             self._recursive_partition(left_indices, level + 1)
             self._recursive_partition(right_indices, level + 1)
         else:
             # Stop splitting if it violates k-anonymity
             self.partitions.append(df_indices)
-            #print(f"Final Partition (Size: {len(df_indices)}, Level: {level}) - Split violates k. Indices: {df_indices.tolist()}") # Debug
+            #self._print(f"Final Partition (Size: {len(df_indices)}, Level: {level}) - Split violates k. Indices: {df_indices.tolist()}") # Debug
 
 
     def fit(self, df: pd.DataFrame):
@@ -229,12 +237,12 @@ class IKA:
         self.partitions = []
         self.generalization_map = []
 
-        print("Starting recursive partitioning...")
+        self._print("Starting recursive partitioning...")
         self._recursive_partition(self._working_df.index, level=0)
-        print(f"Partitioning complete. Found {len(self.partitions)} partitions.")
+        self._print(f"Partitioning complete. Found {len(self.partitions)} partitions.")
 
         # Calculate generalization for each partition
-        print("Calculating generalizations for partitions...")
+        self._print("Calculating generalizations for partitions...")
         for indices in self.partitions:
             partition_data = self._working_df.loc[indices]
             gen_dict = {}
@@ -249,7 +257,7 @@ class IKA:
                  for attr in self.qi_attributes:
                       gen_dict[attr] = '*' # Or pd.NA
             self.generalization_map.append(gen_dict)
-        print("Generalization calculation complete.")
+        self._print("Generalization calculation complete.")
         return self
 
 
@@ -261,7 +269,7 @@ class IKA:
         # Create a copy to store the anonymized results
         self.anonymized_data = df.copy()
 
-        print("Applying generalizations to data...")
+        self._print("Applying generalizations to data...")
         # Apply generalization based on partition map
         if len(self.partitions) != len(self.generalization_map):
              raise RuntimeError("Mismatch between partitions and generalization map. Refit needed.")
@@ -273,9 +281,9 @@ class IKA:
                     # Use .loc to modify the DataFrame slice
                     self.anonymized_data[attr] = self.anonymized_data[attr].astype(str)
                     self.anonymized_data.loc[indices, attr] = gen_value
-            #else: print(f"Skipping empty partition index {i}") # Debug
+            #else: self._print(f"Skipping empty partition index {i}") # Debug
 
-        print("Anonymization transformation complete.")
+        self._print("Anonymization transformation complete.")
         return self.anonymized_data
 
     def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -286,10 +294,10 @@ class IKA:
     def get_information_loss(self) -> Optional[float]:
         """Calculate the information loss after transformation."""
         if self.anonymized_data is None or self._original_df_for_loss is None:
-             print("Warning: Cannot calculate information loss. Call fit() and transform() first.")
+             self._print("Warning: Cannot calculate information loss. Call fit() and transform() first.")
              return None
         if len(self._original_df_for_loss) != len(self.anonymized_data):
-             print("Warning: Original and anonymized data length mismatch. Cannot calculate loss accurately.")
+             self._print("Warning: Original and anonymized data length mismatch. Cannot calculate loss accurately.")
              return None
 
         return calculate_information_loss(

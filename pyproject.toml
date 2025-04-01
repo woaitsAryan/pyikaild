@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pyikaild"
-version = "0.0.4"  # Supplied by dynamic versioning, no need to update.
+version = "0.0.5"  # Supplied by dynamic versioning, no need to update.
 description = "Improved K-Anonymity and l-Diversity library"
 authors = [
     "woaitsAryan <yoprince.ab@gmail.com>"

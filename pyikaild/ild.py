@@ -31,7 +31,7 @@ class ILD:
         sa_attribute (str): Column name of the Sensitive Attribute.
     """
 
-    def __init__(self, l: int, qi_attributes: List[str], sa_attribute: str):
+    def __init__(self, l: int, qi_attributes: List[str], sa_attribute: str, silent: bool = False):
         """Initialize the ILD class with the given parameters."""
         if l < 2:
             # l=1 diversity is meaningless (always satisfied if SA exists)
@@ -45,6 +45,12 @@ class ILD:
         self.qi_attributes = qi_attributes
         self.sa_attribute = sa_attribute
         self._diverse_data: Optional[pd.DataFrame] = None
+        self.silent = silent
+        
+    def _print(self, *args, **kwargs):
+        """Prints only if not silent."""
+        if not self.silent:
+            print(*args, **kwargs)
 
     def _validate_df(self, df: pd.DataFrame):
         """Check if required columns exist."""
@@ -59,7 +65,7 @@ class ILD:
         self._validate_df(df)
         self._diverse_data = df.copy()
 
-        print(f"Applying l-diversity (l={self.l})...")
+        self._print(f"Applying l-diversity (l={self.l})...")
         grouped = self._diverse_data.groupby(self.qi_attributes, observed=False) # observed=False is safer with categoricals
         all_groups = list(grouped.groups.keys()) # Get all group identifiers
         num_groups = len(all_groups)
@@ -72,7 +78,7 @@ class ILD:
         violating_group_names = []
         valid_groups_info = {} # Store SA values of valid groups
 
-        print("Identifying groups violating l-diversity...")
+        self._print("Identifying groups violating l-diversity...")
         for name, group in grouped:
             unique_sa_count = group[self.sa_attribute].nunique()
             if unique_sa_count < self.l:
@@ -80,17 +86,17 @@ class ILD:
             else:
                 valid_groups_info[name] = set(group[self.sa_attribute].unique())
 
-        print(f"Found {len(violating_group_names)} groups violating l={self.l} diversity.")
+        self._print(f"Found {len(violating_group_names)} groups violating l={self.l} diversity.")
 
         if not violating_group_names:
-            print("No l-diversity violations found.")
+            self._print("No l-diversity violations found.")
             return self._diverse_data
 
         if not valid_groups_info:
-             print(f"WARNING: No valid l-diverse groups found to borrow SA values from. Cannot enforce l={self.l}. Returning original data.")
+             self._print(f"WARNING: No valid l-diverse groups found to borrow SA values from. Cannot enforce l={self.l}. Returning original data.")
              return self._diverse_data # Cannot proceed
 
-        print("Attempting to fix violating groups...")
+        self._print("Attempting to fix violating groups...")
         processed_violations = 0
         for group_name in violating_group_names:
             group_df = grouped.get_group(group_name)
@@ -141,7 +147,7 @@ class ILD:
                      potential_donors.pop(idx) # Remove exhausted donor if others exist
 
             if len(borrowed_values) < needed_distinct_values:
-                print(f"Warning: Could not find enough distinct SA values ({len(borrowed_values)} found, {needed_distinct_values} needed) to borrow for group {group_name}. L-diversity might not be fully enforced.")
+                self._print(f"Warning: Could not find enough distinct SA values ({len(borrowed_values)} found, {needed_distinct_values} needed) to borrow for group {group_name}. L-diversity might not be fully enforced.")
                 # Optionally: Apply suppression '*' to some records instead?
 
             # Modify records in the violating group
@@ -154,7 +160,7 @@ class ILD:
             
             processed_violations += 1
 
-        print(f"Processed {processed_violations} violating groups.")
+        self._print(f"Processed {processed_violations} violating groups.")
         # Verify l-diversity after modification (optional)
         # final_grouped = self._diverse_data.groupby(self.qi_attributes)
         # final_violations = 0
