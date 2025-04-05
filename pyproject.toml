@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pyikaild"
-version = "0.0.5"  # Supplied by dynamic versioning, no need to update.
+version = "0.0.6"
 description = "Improved K-Anonymity and l-Diversity library"
 authors = [
     "woaitsAryan <yoprince.ab@gmail.com>"
@@ -24,6 +24,8 @@ pandas = "^2.2.3"
 build = "^1.2.2.post1"
 pydocstyle = "^6.3.0"
 pandas-stubs = "^2.2.3.250308"
+anonpy = "^1.0.0"
+anonypy = "^0.2.1"
 
 [tool.poetry.group.test.dependencies]
 ruff = ">=0.2.2"

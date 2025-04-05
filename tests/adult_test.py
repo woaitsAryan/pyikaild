@@ -36,7 +36,7 @@ def test_adult():
                     sa_attribute=sa_adult,
                     numerical_qi=num_qi_adult,
                     categorical_qi=cat_qi_adult,
-                    max_split_level=8) # Limit split level for faster example run
+                    max_split_level=15) # Limit split level for faster example run
     
     anonymized_adult_df = ika_adult.fit_transform(adult_df)
     print("\nSample of IKA Anonymized Adult Data (k=10):")
