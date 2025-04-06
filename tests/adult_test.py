@@ -69,3 +69,6 @@ def test_adult():
     assert il_adult is not None and 0 <= il_adult <= 1, "Information loss is out of expected range"
     for name, group in adult_groups:
         assert group[sa_adult].nunique() >= 5, f"l-diversity violated for group {name}"
+
+if __name__ == "__main__":
+    test_adult()

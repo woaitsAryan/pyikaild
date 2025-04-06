@@ -280,7 +280,8 @@ class IKA:
                 generalizations = self.generalization_map[i]
                 for attr, gen_value in generalizations.items():
                     # Use .loc to modify the DataFrame slice
-                    self.anonymized_data[attr] = self.anonymized_data[attr].astype(str)
+                    if attr in self._categorical_qi:
+                        self.anonymized_data[attr] = self.anonymized_data[attr].astype(str)
                     self.anonymized_data.loc[indices, attr] = gen_value
             #else: self._print(f"Skipping empty partition index {i}") # Debug
 

@@ -1,0 +1,467 @@
+Name,Age,Pincode,Job,Disease
+Oliver,55,400022,Engineer,Flu
+Sophia,49,100067,Artist,Pneumonia
+Ethan,58,200015,Doctor,Flu
+Isabella,61,300034,Lawyer,Stomach ulcers
+Mia,35,400071,Writer,Stomach infection
+Liam,43,100021,Engineer,Hepatitis
+Abigail,66,200050,Doctor,Stomach cancer
+Noah,31,300005,Lawyer,Asthma
+Chloe,50,400039,Artist,Bronchitis
+Jackson,63,100048,Writer,Pneumonia
+Aria,46,200028,Engineer,Cold
+Lucas,57,300019,Doctor,Heart disease
+Scarlett,39,400064,Lawyer,Hypertension
+Owen,68,100037,Artist,Diabetes
+Ella,32,200008,Writer,Flu
+Aiden,48,300026,Engineer,Pneumonia
+Lily,54,400042,Doctor,Flu
+Grayson,60,100059,Lawyer,Stomach ulcers
+Addison,37,200035,Artist,Stomach infection
+Caleb,41,300011,Writer,Hepatitis
+Aubrey,65,400015,Engineer,Stomach cancer
+Elijah,34,100072,Doctor,Asthma
+Brooklyn,59,200047,Lawyer,Bronchitis
+Daniel,62,300002,Artist,Pneumonia
+Madison,44,400029,Writer,Cold
+Benjamin,51,100063,Engineer,Heart disease
+Hazel,38,200012,Doctor,Hypertension
+Henry,67,300031,Lawyer,Diabetes
+Luna,30,400068,Artist,Flu
+Samuel,47,100018,Writer,Pneumonia
+Aurora,56,200053,Engineer,Flu
+Sebastian,64,300022,Doctor,Stomach ulcers
+Savannah,36,400036,Lawyer,Stomach infection
+Joseph,40,100045,Artist,Hepatitis
+Natalie,69,200005,Writer,Stomach cancer
+David,33,300014,Engineer,Asthma
+Piper,53,400075,Doctor,Bronchitis
+Wyatt,61,100031,Lawyer,Pneumonia
+Violet,45,200041,Artist,Cold
+Carter,52,300008,Writer,Heart disease
+Eleanor,39,400025,Engineer,Hypertension
+Jayden,66,100068,Doctor,Diabetes
+Eva,31,200056,Lawyer,Flu
+John,49,300025,Artist,Pneumonia
+Claire,58,400033,Writer,Flu
+Gabriel,63,100042,Engineer,Stomach ulcers
+Stella,37,200015,Doctor,Stomach infection
+Ryan,42,300001,Lawyer,Hepatitis
+Maya,60,400078,Artist,Stomach cancer
+William,35,100028,Writer,Asthma
+Naomi,54,200048,Engineer,Bronchitis
+James,67,300017,Doctor,Pneumonia
+Penelope,46,400030,Lawyer,Cold
+Alexander,59,100055,Artist,Heart disease
+Layla,32,200022,Writer,Hypertension
+Michael,50,300036,Engineer,Diabetes
+Grace,65,400049,Doctor,Flu
+Benjamin,48,100062,Lawyer,Pneumonia
+Chloe,57,200009,Artist,Flu
+Elijah,62,300029,Writer,Stomach ulcers
+Scarlett,39,400012,Engineer,Stomach infection
+Owen,41,100075,Doctor,Hepatitis
+Lily,55,200042,Lawyer,Stomach cancer
+Grayson,69,300006,Artist,Asthma
+Addison,34,400026,Writer,Bronchitis
+Caleb,51,100033,Engineer,Pneumonia
+Aubrey,64,200019,Doctor,Cold
+Elijah,47,300050,Lawyer,Heart disease
+Brooklyn,53,400046,Artist,Hypertension
+Daniel,36,100058,Writer,Diabetes
+Madison,60,200025,Engineer,Flu
+Benjamin,40,300033,Doctor,Pneumonia
+Hazel,56,400072,Lawyer,Flu
+Henry,68,100049,Artist,Stomach ulcers
+Luna,33,200016,Writer,Stomach infection
+Samuel,52,300003,Engineer,Hepatitis
+Aurora,61,400059,Doctor,Stomach cancer
+Sebastian,45,100066,Lawyer,Asthma
+Savannah,59,200039,Artist,Bronchitis
+Joseph,66,300012,Writer,Pneumonia
+Natalie,38,400023,Engineer,Cold
+David,57,100052,Doctor,Heart disease
+Piper,63,200045,Lawyer,Hypertension
+Wyatt,44,300028,Artist,Diabetes
+Violet,50,400065,Writer,Flu
+Carter,67,100035,Engineer,Pneumonia
+Eleanor,32,200006,Doctor,Flu
+Jayden,58,300023,Lawyer,Stomach ulcers
+Eva,65,400032,Artist,Stomach infection
+John,41,100019,Writer,Hepatitis
+Claire,55,200052,Engineer,Stomach cancer
+Gabriel,60,300041,Doctor,Asthma
+Stella,37,400016,Lawyer,Bronchitis
+Ryan,49,100079,Artist,Pneumonia
+Maya,62,200049,Writer,Cold
+William,34,300004,Engineer,Heart disease
+Naomi,51,400020,Doctor,Hypertension
+James,66,100036,Lawyer,Diabetes
+Penelope,48,200013,Artist,Flu
+Alexander,54,300030,Writer,Pneumonia
+Layla,61,400069,Engineer,Flu
+Michael,39,100046,Doctor,Stomach ulcers
+Grace,43,200059,Lawyer,Stomach infection
+Theodore,56,300018,Artist,Hepatitis
+Eleanor,63,400035,Writer,Stomach cancer
+Mateo,40,100003,Engineer,Asthma
+Stella,52,200026,Doctor,Bronchitis
+Leo,65,300045,Lawyer,Pneumonia
+Hazel,35,400013,Artist,Cold
+Joseph,59,100056,Writer,Heart disease
+Avery,68,200033,Engineer,Hypertension
+Lincoln,46,300009,Doctor,Diabetes
+Owen,51,400077,Lawyer,Flu
+Savannah,60,100023,Artist,Pneumonia
+Jackson,38,200046,Writer,Flu
+Chloe,53,300015,Engineer,Stomach ulcers
+Aria,64,400039,Doctor,Stomach infection
+Grayson,42,100053,Lawyer,Hepatitis
+Abigail,57,200029,Artist,Stomach cancer
+Elijah,69,300003,Writer,Asthma
+Ella,41,400073,Engineer,Bronchitis
+Lucas,55,100030,Doctor,Pneumonia
+Madison,62,200050,Lawyer,Cold
+Noah,37,300017,Artist,Heart disease
+Scarlett,47,400043,Writer,Hypertension
+Oliver,66,100060,Engineer,Diabetes
+Isabella,33,200036,Doctor,Flu
+Ethan,50,300021,Lawyer,Pneumonia
+Sophia,63,400053,Artist,Flu
+Mia,44,100020,Writer,Stomach ulcers
+Liam,59,200040,Engineer,Stomach infection
+Abigail,65,300014,Doctor,Hepatitis
+Noah,36,400010,Lawyer,Stomach cancer
+Chloe,52,100070,Artist,Asthma
+Jackson,68,200037,Writer,Bronchitis
+Aria,31,300007,Engineer,Pneumonia
+Lucas,49,400057,Doctor,Cold
+Madison,60,100024,Lawyer,Heart disease
+Benjamin,37,200047,Artist,Hypertension
+Hazel,53,300013,Writer,Diabetes
+Henry,67,400037,Engineer,Flu
+Luna,45,100054,Doctor,Pneumonia
+Samuel,58,200027,Lawyer,Flu
+Aurora,62,300002,Artist,Stomach ulcers
+Sebastian,32,400074,Writer,Stomach infection
+Savannah,50,100034,Engineer,Hepatitis
+Joseph,64,200051,Doctor,Stomach cancer
+Natalie,48,300020,Lawyer,Asthma
+David,55,400040,Artist,Bronchitis
+Piper,66,100061,Writer,Pneumonia
+Wyatt,39,200030,Engineer,Cold
+Violet,52,300047,Doctor,Heart disease
+Carter,61,400017,Lawyer,Hypertension
+Eleanor,41,100004,Artist,Diabetes
+Jayden,57,200054,Writer,Flu
+Eva,69,300035,Engineer,Pneumonia
+John,34,400011,Doctor,Flu
+Claire,53,100064,Lawyer,Stomach ulcers
+Gabriel,60,200021,Artist,Stomach infection
+Stella,42,300040,Writer,Hepatitis
+Ryan,56,400050,Engineer,Stomach cancer
+Maya,68,100027,Doctor,Asthma
+William,35,200044,Lawyer,Bronchitis
+Naomi,51,300011,Artist,Pneumonia
+James,63,400070,Writer,Cold
+Penelope,47,100037,Engineer,Heart disease
+Alexander,59,200007,Doctor,Hypertension
+Layla,66,300024,Lawyer,Diabetes
+Michael,38,400041,Artist,Flu
+Grace,54,100057,Writer,Pneumonia
+Theodore,61,200034,Engineer,Flu
+Eleanor,40,300001,Doctor,Stomach ulcers
+Mateo,52,400024,Lawyer,Stomach infection
+Stella,67,100038,Artist,Hepatitis
+Leo,33,200055,Writer,Stomach cancer
+Hazel,49,300010,Engineer,Asthma
+Joseph,65,400060,Doctor,Bronchitis
+Avery,43,100027,Lawyer,Pneumonia
+Lincoln,58,200044,Artist,Cold
+Owen,64,300009,Writer,Heart disease
+Savannah,36,400076,Engineer,Hypertension
+Jackson,52,100044,Doctor,Diabetes
+Chloe,69,200011,Lawyer,Flu
+Aria,41,300037,Artist,Pneumonia
+Grayson,55,400014,Writer,Flu
+Abigail,62,100067,Engineer,Stomach ulcers
+Elijah,37,200031,Doctor,Stomach infection
+Ella,50,300048,Lawyer,Hepatitis
+Lucas,67,400054,Artist,Stomach cancer
+Madison,48,100017,Writer,Asthma
+Noah,56,200041,Engineer,Bronchitis
+Scarlett,63,300008,Doctor,Pneumonia
+Oliver,39,400027,Lawyer,Cold
+Isabella,54,100047,Artist,Heart disease
+Ethan,61,200014,Writer,Hypertension
+Sophia,40,300034,Engineer,Diabetes
+Mia,57,400071,Doctor,Flu
+Liam,65,100061,Lawyer,Pneumonia
+Abigail,44,200028,Artist,Flu
+Noah,51,300045,Writer,Stomach ulcers
+Chloe,68,400051,Engineer,Stomach infection
+Jackson,32,100014,Doctor,Hepatitis
+Aria,50,200038,Lawyer,Stomach cancer
+Lucas,62,300005,Artist,Asthma
+Madison,46,400021,Writer,Bronchitis
+Benjamin,59,100058,Engineer,Pneumonia
+Hazel,65,200035,Doctor,Cold
+Henry,40,300022,Lawyer,Heart disease
+Luna,53,400044,Artist,Hypertension
+Samuel,67,100065,Writer,Diabetes
+Aurora,47,200012,Engineer,Flu
+Sebastian,58,300031,Doctor,Pneumonia
+Savannah,61,400078,Lawyer,Flu
+Joseph,36,100015,Artist,Stomach ulcers
+Natalie,51,200042,Writer,Stomach infection
+David,63,300002,Engineer,Hepatitis
+Piper,49,400028,Doctor,Stomach cancer
+Wyatt,57,100052,Lawyer,Asthma
+Violet,66,200022,Artist,Bronchitis
+Carter,43,300039,Writer,Pneumonia
+Eleanor,58,400064,Engineer,Cold
+Jayden,62,100019,Doctor,Heart disease
+Eva,31,200046,Lawyer,Hypertension
+John,47,300016,Artist,Diabetes
+Claire,64,400033,Writer,Flu
+Gabriel,50,100046,Engineer,Pneumonia
+Stella,61,200009,Doctor,Flu
+Ryan,39,300036,Lawyer,Stomach ulcers
+Maya,56,400072,Artist,Stomach infection
+William,68,100062,Writer,Hepatitis
+Naomi,44,200036,Engineer,Stomach cancer
+James,51,300029,Doctor,Asthma
+Penelope,60,400013,Lawyer,Bronchitis
+Alexander,33,100076,Artist,Pneumonia
+Layla,49,200049,Writer,Cold
+Michael,67,300006,Engineer,Heart disease
+Grace,42,400023,Doctor,Hypertension
+Theodore,58,100033,Lawyer,Diabetes
+Eleanor,64,200016,Artist,Flu
+Mateo,35,300046,Writer,Pneumonia
+Stella,52,400030,Engineer,Flu
+Leo,61,100056,Doctor,Stomach ulcers
+Hazel,38,200023,Lawyer,Stomach infection
+Joseph,55,300013,Artist,Hepatitis
+Avery,66,400040,Writer,Stomach cancer
+Lincoln,40,100020,Engineer,Asthma
+Owen,53,200037,Doctor,Bronchitis
+Savannah,67,300007,Lawyer,Pneumonia
+Jackson,46,400057,Artist,Cold
+Chloe,59,100073,Writer,Heart disease
+Aria,62,200040,Engineer,Hypertension
+Grayson,31,300014,Doctor,Diabetes
+Abigail,50,400010,Lawyer,Flu
+Elijah,64,100037,Artist,Pneumonia
+Ella,44,200003,Writer,Flu
+Lucas,56,300020,Engineer,Stomach ulcers
+Madison,63,400067,Doctor,Stomach infection
+Noah,39,100047,Lawyer,Hepatitis
+Scarlett,53,200017,Artist,Stomach cancer
+Oliver,66,300034,Writer,Asthma
+Isabella,47,400054,Engineer,Bronchitis
+Ethan,60,100054,Doctor,Pneumonia
+Sophia,33,200031,Lawyer,Cold
+Mia,49,300001,Artist,Heart disease
+Liam,67,400024,Writer,Hypertension
+Abigail,45,100031,Engineer,Diabetes
+Noah,57,200041,Doctor,Flu
+Chloe,62,300018,Lawyer,Pneumonia
+Jackson,38,400058,Artist,Flu
+Aria,52,100021,Writer,Stomach ulcers
+Lucas,65,200015,Engineer,Stomach infection
+Madison,43,300038,Doctor,Hepatitis
+Benjamin,56,400015,Lawyer,Stomach cancer
+Hazel,69,100078,Artist,Asthma
+Henry,41,200045,Writer,Bronchitis
+Luna,55,300012,Engineer,Pneumonia
+Samuel,63,400025,Doctor,Cold
+Aurora,48,100045,Lawyer,Heart disease
+Sebastian,59,200052,Artist,Hypertension
+Savannah,67,300025,Writer,Diabetes
+Joseph,35,400065,Engineer,Flu
+Natalie,50,100032,Doctor,Pneumonia
+David,64,200029,Lawyer,Flu
+Piper,46,300042,Artist,Stomach ulcers
+Wyatt,56,400016,Writer,Stomach infection
+Violet,61,100059,Engineer,Hepatitis
+Carter,42,200006,Doctor,Stomach cancer
+Eleanor,54,300019,Lawyer,Asthma
+Jayden,68,400036,Artist,Bronchitis
+Eva,33,100056,Writer,Pneumonia
+John,50,200013,Engineer,Cold
+Claire,65,300030,Doctor,Heart disease
+Gabriel,49,400066,Lawyer,Hypertension
+Stella,59,100013,Artist,Diabetes
+Ryan,66,200053,Writer,Flu
+Maya,40,300016,Engineer,Pneumonia
+William,53,400033,Doctor,Flu
+Naomi,61,100040,Lawyer,Stomach ulcers
+James,45,200003,Artist,Stomach infection
+Penelope,58,300026,Writer,Hepatitis
+Alexander,63,400043,Engineer,Stomach cancer
+Layla,32,100060,Doctor,Asthma
+Michael,51,200010,Lawyer,Bronchitis
+Grace,64,300037,Artist,Pneumonia
+Theodore,48,400050,Writer,Cold
+Eleanor,57,100027,Engineer,Heart disease
+Mateo,69,200044,Doctor,Hypertension
+Stella,41,300011,Lawyer,Diabetes
+Leo,54,400077,Artist,Flu
+Hazel,66,100057,Writer,Pneumonia
+Joseph,42,200024,Engineer,Flu
+Avery,56,300041,Doctor,Stomach ulcers
+Lincoln,62,400011,Lawyer,Stomach infection
+Owen,34,100041,Artist,Hepatitis
+Savannah,51,200008,Writer,Stomach cancer
+Jackson,67,300031,Engineer,Asthma
+Chloe,43,400048,Doctor,Bronchitis
+Aria,58,100018,Lawyer,Pneumonia
+Grayson,61,200035,Artist,Cold
+Abigail,37,300005,Writer,Heart disease
+Elijah,52,400022,Engineer,Hypertension
+Ella,65,100055,Doctor,Diabetes
+Lucas,45,200042,Lawyer,Flu
+Madison,59,300012,Artist,Pneumonia
+Noah,69,400055,Writer,Flu
+Scarlett,44,100062,Engineer,Stomach ulcers
+Oliver,55,200029,Doctor,Stomach infection
+Isabella,64,300046,Lawyer,Hepatitis
+Ethan,36,400012,Artist,Stomach cancer
+Sophia,53,100029,Writer,Asthma
+Mia,66,200043,Engineer,Bronchitis
+Liam,47,300009,Doctor,Pneumonia
+Abigail,60,400073,Lawyer,Cold
+Noah,32,100053,Artist,Heart disease
+Chloe,49,200010,Writer,Hypertension
+Jackson,65,300033,Engineer,Diabetes
+Aria,40,400060,Doctor,Flu
+Lucas,56,100073,Lawyer,Pneumonia
+Madison,63,200027,Artist,Flu
+Benjamin,47,300004,Writer,Stomach ulcers
+Hazel,57,400074,Engineer,Stomach infection
+Henry,66,100017,Doctor,Hepatitis
+Luna,42,200050,Lawyer,Stomach cancer
+Samuel,54,300017,Artist,Asthma
+Aurora,60,400047,Writer,Bronchitis
+Sebastian,35,100047,Engineer,Pneumonia
+Savannah,53,200014,Doctor,Cold
+Joseph,69,300007,Lawyer,Heart disease
+Natalie,38,400051,Artist,Hypertension
+David,55,100024,Writer,Diabetes
+Piper,64,200041,Engineer,Flu
+Wyatt,44,300038,Doctor,Pneumonia
+Violet,57,400028,Lawyer,Flu
+Carter,68,100051,Artist,Stomach ulcers
+Eleanor,39,200011,Writer,Stomach infection
+Jayden,52,300028,Engineer,Hepatitis
+Eva,60,400075,Doctor,Stomach cancer
+John,46,100011,Lawyer,Asthma
+Claire,58,200005,Artist,Bronchitis
+Gabriel,65,300032,Writer,Pneumonia
+Stella,41,400042,Engineer,Cold
+Ryan,54,100069,Doctor,Heart disease
+Maya,62,200019,Lawyer,Hypertension
+William,37,300009,Artist,Diabetes
+Naomi,50,400029,Writer,Flu
+James,67,100079,Engineer,Pneumonia
+Penelope,48,200049,Doctor,Flu
+Alexander,59,300015,Lawyer,Stomach ulcers
+Layla,63,400019,Artist,Stomach infection
+Michael,31,100039,Writer,Hepatitis
+Grace,51,200006,Engineer,Stomach cancer
+Theodore,66,300023,Doctor,Asthma
+Eleanor,45,400076,Lawyer,Bronchitis
+Mateo,58,100050,Artist,Pneumonia
+Stella,60,200046,Writer,Cold
+Leo,39,300013,Engineer,Heart disease
+Hazel,56,400056,Doctor,Hypertension
+Joseph,67,100030,Lawyer,Diabetes
+Avery,43,200017,Artist,Flu
+Lincoln,53,300033,Writer,Pneumonia
+Owen,65,400030,Engineer,Flu
+Savannah,49,100066,Doctor,Stomach ulcers
+Jackson,58,200007,Lawyer,Stomach infection
+Chloe,63,300044,Artist,Hepatitis
+Aria,46,400040,Writer,Stomach cancer
+Grayson,59,100014,Engineer,Asthma
+Abigail,66,200034,Doctor,Bronchitis
+Elijah,44,300001,Lawyer,Pneumonia
+Ella,51,400071,Artist,Cold
+Lucas,67,100051,Writer,Heart disease
+Madison,40,200028,Engineer,Hypertension
+Noah,54,300045,Doctor,Diabetes
+Scarlett,61,400021,Lawyer,Flu
+Oliver,47,100018,Artist,Pneumonia
+Isabella,57,200038,Writer,Flu
+Ethan,68,300018,Engineer,Stomach ulcers
+Sophia,42,400055,Doctor,Stomach infection
+Mia,53,100025,Lawyer,Hepatitis
+Liam,65,200012,Artist,Stomach cancer
+Abigail,35,300002,Writer,Asthma
+Noah,50,400062,Engineer,Bronchitis
+Chloe,64,100032,Doctor,Pneumonia
+Jackson,45,200052,Lawyer,Cold
+Aria,56,300049,Artist,Heart disease
+Lucas,62,400032,Writer,Hypertension
+Madison,41,100069,Engineer,Diabetes
+Benjamin,57,200026,Doctor,Flu
+Hazel,69,300019,Lawyer,Pneumonia
+Henry,33,400069,Artist,Flu
+Luna,49,100049,Writer,Stomach ulcers
+Samuel,66,200016,Engineer,Stomach infection
+Aurora,37,300036,Doctor,Hepatitis
+Sebastian,53,400013,Lawyer,Stomach cancer
+Savannah,60,100009,Artist,Asthma
+Joseph,43,200003,Writer,Bronchitis
+Natalie,55,300039,Engineer,Pneumonia
+David,61,400063,Doctor,Cold
+Piper,46,100036,Lawyer,Heart disease
+Wyatt,58,200050,Artist,Hypertension
+Violet,64,300027,Writer,Diabetes
+Carter,40,400057,Engineer,Flu
+Eleanor,52,100010,Doctor,Pneumonia
+Jayden,69,200004,Lawyer,Flu
+Eva,48,300010,Artist,Stomach ulcers
+John,56,400067,Writer,Stomach infection
+Claire,62,100077,Engineer,Hepatitis
+Gabriel,44,200051,Doctor,Stomach cancer
+Stella,51,300014,Lawyer,Asthma
+Ryan,67,400037,Artist,Bronchitis
+Maya,39,100001,Writer,Pneumonia
+William,54,200021,Engineer,Cold
+Naomi,60,300041,Doctor,Heart disease
+James,47,400051,Lawyer,Hypertension
+Penelope,58,100028,Artist,Diabetes
+Alexander,65,200045,Writer,Flu
+Layla,38,300005,Engineer,Pneumonia
+Michael,52,400025,Doctor,Flu
+Grace,63,100035,Lawyer,Stomach ulcers
+Theodore,46,200025,Artist,Stomach infection
+Eleanor,59,300012,Writer,Hepatitis
+Mateo,66,400049,Engineer,Stomach cancer
+Stella,41,100012,Doctor,Asthma
+Leo,55,200032,Lawyer,Bronchitis
+Hazel,61,300016,Artist,Pneumonia
+Joseph,45,400059,Writer,Cold
+Avery,57,100072,Engineer,Heart disease
+Lincoln,68,200009,Doctor,Hypertension
+Owen,42,300033,Lawyer,Diabetes
+Savannah,51,400036,Artist,Flu
+Jackson,64,100022,Writer,Pneumonia
+Chloe,40,200039,Engineer,Flu
+Aria,53,300026,Doctor,Stomach ulcers
+Grayson,65,400046,Lawyer,Stomach infection
+Abigail,47,100063,Artist,Hepatitis
+Elijah,58,200013,Writer,Stomach cancer
+Ella,63,300003,Engineer,Asthma
+Lucas,35,400070,Doctor,Bronchitis
+Madison,50,100010,Lawyer,Pneumonia
+Noah,66,200030,Artist,Cold
+Scarlett,44,300037,Writer,Heart disease
+Oliver,54,400047,Engineer,Hypertension
+Isabella,60,100058,Artist,Diabetes
+Ethan,41,200022,Lawyer,Flu
+Sophia,57,400035,Engineer,Pneumonia
+Liam,62,100046,Doctor,Stomach ulcers
+Abigail,32,200009,Writer,Stomach infection

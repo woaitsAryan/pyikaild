@@ -5,23 +5,13 @@ import numpy as np
 import time
 import warnings
 import anonypy
+import csv
 
 def test_arba_comparison():
     print("\n--- Comparing ARBA vs IKA vs anonypy on Patient Data ---")
-    patient_data = {
-        'Name': ['Anand', 'Bharti', 'Carl', 'Diana', 'Emily', 'Fatima', 'Garvin', 
-                'Harry', 'Ian', 'Jack', 'Kumar', 'Lily', 'Mona', 'Nancy'],
-        'Age': [45, 47, 52, 53, 64, 67, 62, 33, 37, 42, 30, 58, 60, 65],
-        'Pincode': [400052, 400058, 400032, 400045, 100032, 100053, 200045,
-                   300012, 300023, 400011, 400019, 100078, 200033, 200041],
-        'Job': ['Writer', 'Writer', 'Lawyer', 'Artist', 'Lawyer', 'Lawyer', 'Writer',
-               'Doctor', 'Engineer', 'Doctor', 'Engineer', 'Artist', 'Doctor', 'Lawyer'],
-        'Disease': ['Flu', 'Pneumonia', 'Flu', 'Stomach ulcers', 'Stomach infection', 
-                   'Hepatitis', 'Stomach cancer', 'Asthma', 'Bronchitis', 'Pneumonia',
-                   'Cold', 'Heart disease', 'Hypertension', 'Diabetes']
-    }
-    # Create extended dataset for better testing
-    patient_df = pd.DataFrame(patient_data)
+    csv_file_path = './base_data.csv'
+
+    patient_df = pd.read_csv(csv_file_path)
     print("\nOriginal Patient Data:")
     print(patient_df)
 
